@@ -55,3 +55,23 @@ def windows_to_wsl_path(windows_path: str) -> Path:
 #sys.path.append(str(project_root / "src"))
 #
 #from myfunctions import detect_os, windows_to_wsl_path
+
+# CONFIGで設定したPathの確認
+def check_config_paths(config_class):
+    missing = []
+    for attr in dir(config_class):
+        if attr.startswith("_"):
+            continue
+        value = getattr(config_class, attr)
+        if isinstance(value, Path):
+            if not value.exists():
+                missing.append((attr, value))
+    if missing:
+        print("以下のパスが存在しません:")
+        for name, path in missing:
+            print(f" - {name}: {path}")
+    else:
+        print("すべてのパスが存在します")
+
+# 使用例 CONFIGで設定したPathの存在確認
+#check_config_paths(CONFIG)
