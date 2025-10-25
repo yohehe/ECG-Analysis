@@ -48,3 +48,10 @@ def windows_to_wsl_path(windows_path: str) -> Path:
     wsl_path = f"/mnt/{drive}{rest}"
     
     return Path(wsl_path)
+
+# 絶地PATHで環境依存せずにsrcフォルダをimportできるようにするコード例
+## Notebookの作業ディレクトリを基準にパスを追加
+#project_root = Path.cwd()
+#sys.path.append(str(project_root / "src"))
+#
+#from myfunctions import detect_os, windows_to_wsl_path
