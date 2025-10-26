@@ -1,0 +1,6 @@
+# config.yaml
+train_csv: train.csv
+test_csv: test.csv
+sample_submission: sample_submission.parquet
+train_dir: train
+test_dir: test
