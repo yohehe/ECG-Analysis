@@ -76,4 +76,9 @@ def check_config_paths(config_class):
 # 使用例 CONFIGで設定したPathの存在確認
 #check_config_paths(CONFIG)
 
-###
+#config.yamlを配置したフォルダをルートフォルダと設定する
+def find_project_root(marker: str = "config.yaml") -> Path:
+    path = Path.cwd()
+    while not (path / marker).exists() and path != path.parent:
+        path = path.parent
+    return path
